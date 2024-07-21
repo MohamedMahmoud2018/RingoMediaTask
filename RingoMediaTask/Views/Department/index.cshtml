@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Departments";
+}
+
+@model IEnumerable<Department>
+
+
+<h2>Departments</h2>
+<p>
+    @Html.ActionLink("Go to Reminder Page", "Index", "Reminder")
+</p>
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Department</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentLogo)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentLogo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |
+                    <a asp-action="Hierarchy" asp-route-id="@item.DepartmentId">View Hierarchy</a>|
+                    <a asp-action="Delete" asp-route-id="@item.DepartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
